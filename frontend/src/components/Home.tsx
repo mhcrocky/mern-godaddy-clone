@@ -323,7 +323,7 @@ const FooterSection = () => {
     </div>
   )
 }
-const Login = () => {
+const Home = () => {
 
   return (
     <Layout>
@@ -338,4 +338,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Home;

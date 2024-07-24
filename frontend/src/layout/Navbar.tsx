@@ -22,10 +22,10 @@ const Navbar = () => {
             headers: {
                 _token: token
             }
-        }).then((res) => {
+        }).then(() => {
             navigate('/')
             setUser(null)
-        }).catch(err => {
+        }).catch(() => {
             toast.error('Network Error');
         }) 
     }
@@ -38,7 +38,7 @@ const Navbar = () => {
         }).then((res) => {
             // console.log(res.data)
             setUser(res.data.data);
-        }).catch(err => {
+        }).catch(() => {
             setUser(null)
         })
     }, []);
