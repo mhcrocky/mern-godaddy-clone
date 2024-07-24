@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const logOut = () => {
         const token: string | undefined = Cookies.get('_token');
-        axios.get(`http://localhost:5000/api/logout`, {
+        axios.get(`/api/logout`, {
             headers: {
                 _token: token
             }
@@ -31,7 +31,7 @@ const Navbar = () => {
     }
     useEffect(() => {
         const token: string | undefined = Cookies.get('_token');
-        axios.get(`http://localhost:5000/api/user-verify`, {
+        axios.get(`/api/user-verify`, {
             headers: {
                 _token: token
             }

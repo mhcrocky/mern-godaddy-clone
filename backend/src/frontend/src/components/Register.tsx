@@ -24,7 +24,7 @@ const Register = () => {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      axios.post('http://localhost:5000/api/register', values).then((res) => {
+      axios.post('/api/register', values).then((res) => {
         toast.success(res.data?.success);
         navigate('/login');
       }).catch((err) => {

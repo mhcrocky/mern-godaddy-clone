@@ -19,7 +19,7 @@ const Login = () => {
     validateOnChange: false,
     onSubmit: async (values) => {
       console.log(values);
-      axios.post('http://localhost:5000/api/login', values).then((res) => {
+      axios.post('/api/login', values).then((res) => {
         toast.success(res.data?.success);
         Cookies.set('_token', res.data.token)
         navigate('/');
