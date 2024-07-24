@@ -18,10 +18,10 @@ const port = PORT || 5000;
 
 app.use("/api", router);
 
-app.use(express.static(path.join(__dirname, 'frontend/dist')))
+app.use(express.static(path.join(__dirname, '../frontend/dist')))
 
 app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, 'frontend/dist') });
+  res.sendFile('index.html', { root: path.join(__dirname, '../frontend/dist') });
 });
 connectDB()
   .then(() => {
