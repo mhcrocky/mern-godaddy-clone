@@ -4,6 +4,7 @@ import morgan from "morgan";
 import connectDB from "./database/connection";
 import router from "./router/route";
 import path from 'path';
+import { PORT } from "./config";
 const app = express();
 
 app.use(express.json());
@@ -12,7 +13,7 @@ app.use(morgan("tiny"));
 app.disable("x-powered-by");
 
 
-const port = 5000;
+const port = PORT || 5000;
 
 
 app.use("/api", router);
