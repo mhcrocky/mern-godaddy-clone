@@ -1,4 +1,4 @@
-import styles from "../styles/Username.module.css";
+import styles from "./Username.module.css";
 import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { loginValidate } from "../helper/validate";
