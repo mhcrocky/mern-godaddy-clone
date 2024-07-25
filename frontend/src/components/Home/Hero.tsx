@@ -1,13 +1,9 @@
 const HeroSection = () => {
-    const SetStartSttyle = {
-      background: 'url(https://img1.wsimg.com/cdnassets/transform/a4a12cf6-d7d3-4475-b371-0ac1f38c0ac8/mrq-hp-airo-landscape)',
-      backgroundSize: 'cover'
-    }
     return (
       <div className="px-8 w-full block">
         <div className="grid grid-cols-3 " >
           <div className="col-span-3 lg:col-span-3 xl:col-span-2 mb-5" >
-            <div className="h-full px-10  rounded-md grid grid-cols-2 mr-0 lg:mr-0 xl:mr-3" style={SetStartSttyle}>
+            <div className="h-full px-10  rounded-md grid grid-cols-2 mr-0 lg:mr-0 xl:mr-3 bg-cover	bg-[url(https://img1.wsimg.com/cdnassets/transform/a4a12cf6-d7d3-4475-b371-0ac1f38c0ac8/mrq-hp-airo-landscape)]" >
               <div className="pt-20">
                 <p >
                   <b>Websites &Commerce</b>
