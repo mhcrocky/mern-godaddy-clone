@@ -1,47 +1,17 @@
 import type { NextFunction, Request, Response } from "express";
 import User from "../model/user.model";
-import Blacklist from "../model/blacklist.model";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { SECRET_ACCESS_TOKEN } from '../config/index';
+import * as dotenv from "dotenv";
+dotenv.config();
 
-export const logOut = async (req: Request, res: Response) => {
-  try {
-    const accessToken = req.headers['_token']; // get the session cookie from request header
-    if (!accessToken) return res.sendStatus(204); // No content
-    const checkIfBlacklisted = await Blacklist.findOne({ token: accessToken }); // Check if that token is blacklisted
-    // if true, send a no content response.
-    if (checkIfBlacklisted) return res.sendStatus(204);
-    // otherwise blacklist token
-    const newBlacklist = new Blacklist({
-      token: accessToken,
-    });
-    await newBlacklist.save();
-    // Also clear request cookie on client
-    res.status(200).json({ message: 'You are logged out!' });
-  } catch (err) {
-    res.status(500).json({
-      status: 'error',
-      message: 'Internal Server Error',
-    });
-  }
-}
 export const verifyUser = async (req: Request, res: Response) => {
   try {
     const authHeader = req.headers["_token"]; // get the session cookie from request header
     if (!authHeader) return res.sendStatus(401); // if there is no cookie from request header, send an unauthorized response.
     const accessToken: string = authHeader as string; // If there is, split the cookie string to get the actual jwt
 
-    const checkIfBlacklisted = await Blacklist.findOne({ token: accessToken }); // Check if that token is blacklisted
-    // if true, send an unathorized message, asking for a re-authentication.
-    if (checkIfBlacklisted)
-        return res
-            .status(401)
-            .json({ message: "This session has expired. Please login" });
-    // if token has not been blacklisted, verify with jwt to see if it has been tampered with or not.
-    // that's like checking the integrity of the accessToken
-
-    jwt.verify(accessToken, SECRET_ACCESS_TOKEN as string, async (err, decoded: any) => {
+    jwt.verify(accessToken, process.env.SECRET_ACCESS_TOKEN as string, async (err, decoded: any) => {
       if (err) {
         // if token has been altered or has expired, return an unauthorized error
         return res
@@ -50,11 +20,12 @@ export const verifyUser = async (req: Request, res: Response) => {
       }
       const id = decoded?.userId
       const user = await User.findById(id);
-      if (user?.email) {
+      // check user exist and token is listed in whitelist
+      if (user?.email && user?.whitelist.filter(val => val === accessToken).length) {
         return res.status(200).json({
           message: "login success",
           data: {
-            email: user.email
+            email: user.email,
           }
         });
       } else {
@@ -115,12 +86,12 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const login = (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
     User
       .findOne({ email })
-      .then((user) => {
+      .then(async (user) => {
         bcrypt
           .compare(password, user?.password || "")
           .then((passwordCheck) => {
@@ -131,9 +102,23 @@ export const login = (req: Request, res: Response) => {
               {
                 userId: user?._id,
               },
-              SECRET_ACCESS_TOKEN as string,
+              process.env.SECRET_ACCESS_TOKEN as string,
               { expiresIn: "24h" }
             );
+
+            let whitelist = user?.whitelist || [];
+            whitelist.push(token);
+
+            User.findOneAndUpdate({
+              email: user?.email
+            }, {
+              whitelist: whitelist
+            }).then((user) => {
+              console.log(user)
+            })
+              .catch(() => {
+                return res.status(404).send({ error: "user not found" });
+              });
             res.cookie("SessionID", token, {
               maxAge: 20 * 60 * 1000, // would expire in 20minutes
               httpOnly: true, // The cookie is only accessible by the web server
@@ -159,3 +144,26 @@ export const login = (req: Request, res: Response) => {
   }
 };
 
+export const logOut = async (req: Request, res: Response) => {
+  try {
+    const accessToken = req.headers['_token']; // get the session cookie from request header
+    if (!accessToken) return res.sendStatus(204); // No content
+    jwt.verify(accessToken as string, process.env.SECRET_ACCESS_TOKEN as string, async (err, decoded: any) => {
+
+      const id = decoded?.userId
+      const user = await User.findById(id);
+      let whitelist = user?.whitelist || [];
+     
+      await User.findByIdAndUpdate(id,{
+        whitelist:  whitelist.filter(val=> val !== accessToken as string)
+      });
+
+    })
+    res.status(200).json({ message: 'You are logged out!' });
+  } catch (err) {
+    res.status(500).json({
+      status: 'error',
+      message: 'Internal Server Error',
+    });
+  }
+}

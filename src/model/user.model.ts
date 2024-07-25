@@ -16,6 +16,7 @@ export const UserSchema = new mongoose.Schema({
   mobile: { type: Number },
   address: { type: String },
   profile: { type: String },
+  whitelist: { type: [String] }
 });
 
 export default mongoose.model("User", UserSchema);

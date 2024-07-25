@@ -4,7 +4,9 @@ import morgan from "morgan";
 import connectDB from "./database/connection";
 import router from "./router/route";
 import path from 'path';
-import { PORT } from "./config";
+import * as dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
 
 app.use(express.json());
@@ -13,7 +15,7 @@ app.use(morgan("tiny"));
 app.disable("x-powered-by");
 
 
-const port = PORT || 5000;
+const port = process.env.PORT || 5000;
 
 
 app.use("/api", router);
