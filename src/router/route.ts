@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as auth from "../controllers/authController";
 import * as todo from '../controllers/todoController';
-import { getUserId } from "../controllers/todoController";
+import { getUserId } from "../middleware/auth";
 const router = Router();
 
 router.route("/register").post(auth.register);
