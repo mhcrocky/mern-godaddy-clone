@@ -1,162 +1,10 @@
 
-import Layout from "../layout";
-import step1 from '../assets/Screenshot_1.png';
-import step2 from '../assets/Screenshot_2.png';
-import step3 from '../assets/Screenshot_3.png';
-import godaddyguid from '../assets/godaddyguide.png';
-const SearchDomainSection = () => {
-  return (
-    <div className="relative rounded-xl overflow-auto p-8 w-full">
-      <div className="grid xl:grid-cols-2 2xl:grid-cols-3">
-        <div className="p-4 col-span-2">
-          <div className="flex">
-            <div className="relative w-full mr-0 formkit-field">
-              <input id="member_email" className="bg-[#ddd] border text-sm rounded-none  block w-full pl-10 p-5 " name="email_address" aria-label="Email Address" placeholder="Type the domain you want" required={true} />
-            </div>
-            <button data-element="submit" className="formkit-submit bg-[#01838c] w-1/3">
-              <span className="text-sm font-medium text-center text-white rounded-none cursor-pointer ">Search Domain</span>
-            </button>
-          </div>
-        </div>
-        <div className="p-2 col-span-2 xl:col-span-2 2xl:col-span-1">
-          <div className="h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-screen-xl flex flex-wrap text-center items-center justify-between mx-auto p-4">
-            <div className="">
-              <b>.online</b> $0.99
-            </div>
-            <div className="">
-              <b>.net</b> $14.99
-            </div>
-            <div className="">
-              <b>.inc</b> $9.99
-            </div>
-            <div className="">
-              <b>.edu</b> $0.99
-            </div>
-          </div>
+import Layout from "../../layout";
 
-        </div>
-      </div>
-    </div>
-  );
-}
-const GetStartSection = () => {
-  const SetStartSttyle = {
-    background: 'url(https://img1.wsimg.com/cdnassets/transform/a4a12cf6-d7d3-4475-b371-0ac1f38c0ac8/mrq-hp-airo-landscape)',
-    backgroundSize: 'cover'
-  }
-  return (
-    <div className="p-8 w-full block">
-      <div className="grid grid-cols-3 " >
-        <div className="col-span-3 lg:col-span-3 xl:col-span-2 mb-5" >
-          <div className="h-full px-10  rounded-md grid grid-cols-2 mr-0 lg:mr-0 xl:mr-3" style={SetStartSttyle}>
-            <div className="py-20">
-              <p >
-                <b>Websites &Commerce</b>
-              </p>
-              <h1 className="text-5xl font-semibold py-8 font-serif">Tools for all your Businesses first</h1>
-              <p>Websites and store solutions for any small business.</p>
-              <div className="py-4">
-                <button>
-                  <span className="mr-3 px-5 py-3 text-sm font-medium text-center text-white bg-black rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-black dark:focus:ring-blue-800">Get started</span>
-                </button>
-                <span>Learn more</span>
-              </div>
-              <p className="text-sm">No Credit Card Required**</p>
-            </div>
-          </div>
-          <div className="w-[100px] h-[100px]"></div>
-        </div>
-        <div className="col-span-3 col-span-3 lg:col-span-3 xl:col-span-1 mb-5 p-10 pr-20 rounded-md bg-green-200">
-          <div>
-            <p >
-              <b>Domain Names</b>
-            </p>
-            <h1 className="text-4xl py-2">Grab a.com for just<br /> $0.1*/1st yr</h1>
-            <p className="py-3">2-year purchase required*</p>
-            <div className="py-4">
-              <button>
-                <span className="mr-3 px-5 py-3 text-sm font-medium text-center text-white bg-black rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-black dark:focus:ring-blue-800 px-12">Find your Domain</span>
-              </button>
-            </div>
-            <p className="py-3">Transfor Your Domains*</p>
-
-            <p className="text-sm">No Credit Card Required**</p>
-          </div>
-
-        </div>
-      </div>
-      <div className="grid md:grid-cols-3 lg:grid-cols-5  grid-rows-2 py-4">
-        <div className="border-slate-200	border text-center p-4">Domains</div>
-        <div className="border-slate-200	border text-center p-4">SSL Security</div>
-        <div className="border-slate-200	border text-center p-4">Websites</div>
-        <div className="border-slate-200	border text-center p-4">Wordpress</div>
-        <div className="border-slate-200	border text-center p-4 row-span-2">
-          <p className="text-5xl font-black">.Shop</p>
-          <p>Sale! $0.99*/1st yr.</p>
-          <p>Attract Shoppers. Sell more staff</p>
-        </div>
-        <div className="border-slate-200	border text-center p-4">Email&Microsoft 365</div>
-        <div className="border-slate-200	border text-center p-4">Website Design Services</div>
-        <div className="border-slate-200	border text-center p-4">Online Store</div>
-        <div className="border-slate-200	border text-center p-4 col-span-1 sm-col-span-1 md:col-span-3 lg:col-span-1">Web Hosting</div>
-      </div>
-    </div>
-  );
-}
-const SuccessSection = () => {
-  return (<div className="w-full p-20">
-    <div className="flex flex-wrap mx-auto items-center justify-between px-8 p-4 max-w-screen-lg grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="row-span-1 pb-10 grid grid-cols-2 ">
-        <p className="text-4xl pb-10">Success in<br /> 3 easy steps.</p>
-      </div>
-      <div className="row-span-2">
-        <img className="h-auto max-w-full pb-8 rounded-lg" src={step1} alt="" />
-        <p>01</p>
-        <p className="text-lg font-black py-4">Sell online with a WEBSITE</p>
-        <p className="text-xs">Sell anything for physical products to download and services,<br /> and manage to all in one place.</p>
-        <div className="py-4">
-          <button>
-            <span className="mr-3 px-5 py-3 text-sm font-medium text-center text-white bg-black rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-black dark:focus:ring-blue-800">Start Get Paid</span>
-          </button>
-          <span>Learn more</span>
-        </div>
-      </div>
-      <div className="row-span-2">
-        <img className="h-auto max-w-full rounded-lg" src={step2} alt="" />
-        <p>02</p>
-
-        <p className="text-lg font-black py-4">Save with the lowest fees</p>
-        <p className="text-xs">
-          2.3% + 0@ per in=-person transaction.<br />
-          2.3% + 30@ per online transaction.<br />
-          Enjoy the lowest transaction fees compared to other leasing <br /> providers.
-        </p>
-        <div className="py-4">
-          <button>
-            <span className="mr-3 px-5 py-3 text-sm font-medium text-center text-white bg-black rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-black dark:focus:ring-blue-800">Get started</span>
-          </button>
-          <span>Learn more</span>
-        </div>
-      </div>
-      <div className="row-span-2">
-        <img className="h-auto max-w-full rounded-lg" src={step3} alt="" />
-        <p>03</p>
-
-        <p className="text-lg font-black py-4">Sell in-person and on the go</p>
-        <p className="text-xs">
-          Our new Point of Sale devices are designed to fit any business and <br /> budget.Choose the one that's right for you.
-        </p>
-        <div className="py-4">
-          <button>
-            <span className="mr-3 px-5 py-3 text-sm font-medium text-center text-white bg-black rounded-lg cursor-pointer hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-black dark:focus:ring-blue-800">Learn More</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  )
-};
-
+import godaddyguid from '../../assets/godaddyguide.png';
+import HeroSection from "./Hero";
+import SearchSection from "./Search";
+import SuccessSection from "./Success";
 const TemplateSection = () => {
   return (
     <div className="w-full bg-[#e8eaec]">
@@ -329,9 +177,9 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="h-screen">
-        <SearchDomainSection />
-        <GetStartSection />
+      <div className="bg-white">
+        <SearchSection />
+        <HeroSection />
         <SuccessSection />
         <TemplateSection />
         <FooterSection />

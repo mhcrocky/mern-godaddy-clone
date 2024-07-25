@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./components/Home/Home";
 import Register from "./components/Register";
 import PageNotFound from "./components/PageNotFound";
 import Login from "./components/Login";
-
+import ProtectedRoute from "./components/ProtectedRoute";
+import MyPage from "./components/Mypage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +20,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Login />,
+    element:
+      <ProtectedRoute>
+        <MyPage />
+      </ProtectedRoute>
   },
   {
     path: "*",
@@ -30,11 +34,11 @@ const router = createBrowserRouter([
 function App() {
   return (
 
-      <main>
-        <RouterProvider router={router}>
+    <main>
+      <RouterProvider router={router}>
 
-        </RouterProvider>
-      </main>
+      </RouterProvider>
+    </main>
   );
 }
 

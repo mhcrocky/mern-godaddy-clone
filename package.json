@@ -6,12 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
-    "start":"npx ts-node ./src/index.ts"
+    "start": "npx ts-node ./src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.6",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -25,6 +26,7 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.13",
     "otp-generator": "^4.0.1",
+    "react-redux": "^9.1.2",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {

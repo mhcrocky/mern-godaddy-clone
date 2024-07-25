@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import toast from "react-hot-toast";
-import {AuthValueType ,ErrorType} from './type';
+import {AuthValueType ,ErrorType, UserInfoType} from './type';
+
 
 export const registerValidate = async (values: AuthValueType) => {
-  const error: any = emailVerify({}, values.email);
+  const error: ErrorType = emailVerify({}, values.email);
   passwordVerify(error, values.password);
   confirmpassVaidate(error, values)
   return error;

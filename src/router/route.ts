@@ -1,11 +1,14 @@
 import { Router } from "express";
-import * as controller from "../controllers/appController";
-
+import * as auth from "../controllers/authController";
+import * as todo from '../controllers/todoController';
 const router = Router();
 
-router.route("/register").post(controller.register);
-router.route("/user-verify").get(controller.verifyUser);
-router.route("/logout").get(controller.logOut);
-router.route("/login").post( controller.login);
+router.route("/register").post(auth.register);
+router.route("/user-verify").get(auth.verifyUser);
+router.route("/logout").get(auth.logOut);
+router.route("/login").post( auth.login);
+
+router.route('/todo').post(todo.create);
+router.route('/todo/:id').post(todo.update);
 
 export default router;
