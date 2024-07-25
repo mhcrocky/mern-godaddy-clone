@@ -24,46 +24,53 @@ const Register = () => {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      axios.post('/api/register', values).then((res:any) => {
+      axios.post('/api/register', values).then((res: any) => {
         toast.success(res.data?.success);
         navigate('/login');
-      }).catch((err:any) => {
+      }).catch((err: any) => {
         console.log(err.response.data.error)
         toast.error(err?.response?.data?.error ? err.response.data.error : 'Network Error')
       })
     },
   });
+  const inputclass = "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer";
+  const labelclass = "peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6";
   return (
     <Layout>
-      <div className="containemx-auto">
-        <div className="flex items-center justify-center h-screen">
-          <div className={(cn(styles.glass), "w-1/2")}>
-            <div className="flex flex-col items-center title">
-              <h4 className="text-5xl font-bold">Register</h4>
-              <span className="w-2/3 py-4 text-xl text-center text-gray-500 ">
-                {"Join with us now and enjoy our services"}
-              </span>
+      <div className="containemx-auto h-full m-auto">
+        <div className="flex items-center justify-center">
+        <div>
+            <div className="flex flex-col items-center title sm:w-[500px] w-screen px-10 py-30">
+              <h4 className="text-5xl font-bold py-10">Register</h4>
             </div>
-            <form className="py-1" onSubmit={formik.handleSubmit}>
+            <form className="p-8" onSubmit={formik.handleSubmit}>
               <div className="flex flex-col items-center gap-6 textbox">
-                <input
-                  {...formik.getFieldProps("email")}
-                  className={styles.textbox}
-                  type="text"
-                  placeholder="email"
-                />
-                <input
-                  {...formik.getFieldProps("password")}
-                  className={styles.textbox}
-                  type="password"
-                  placeholder="password"
-                />
-                <input
-                  {...formik.getFieldProps("confirmPwd")}
-                  className={styles.textbox}
-                  type="password"
-                  placeholder="Confirm Passowrd"
-                />
+                <div className="relative z-0 w-full mb-5 group">
+                  <input {...formik.getFieldProps("email")}
+                    type="text"
+                    placeholder=" "
+                    className={inputclass}
+                  />
+                  <label htmlFor="floating_email" className={labelclass}>Email</label>
+                </div>
+                <div className="relative z-0 w-full mb-5 group">
+                  <input
+                    {...formik.getFieldProps("password")}
+                    type="password"
+                    placeholder=" "
+                    className={inputclass}
+                  />
+                  <label htmlFor="floating_email" className={labelclass}>Password</label>
+                </div>
+                <div className="relative z-0 w-full mb-5 group">
+                  <input {...formik.getFieldProps("confirmPwd")}
+                    type="password"
+                    placeholder=" "
+                    className={inputclass}
+                  />
+                  <label htmlFor="floating_email" className={labelclass}>Confirm Password</label>
+                </div>
+
                 <button className={styles.btn} type="submit">
                   Register
                 </button>

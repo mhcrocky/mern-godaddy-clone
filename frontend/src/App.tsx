@@ -34,7 +34,7 @@ const router = createBrowserRouter([
 function App() {
   return (
 
-    <main>
+    <main className="w-full h-full min-h-[100vh] flex flex-col">
       <RouterProvider router={router}>
 
       </RouterProvider>
