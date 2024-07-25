@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import toast from "react-hot-toast";
-import {AuthValueType ,ErrorType, UserInfoType} from './type';
+import {AuthValueType ,ErrorType} from './type';
 
 
 export const registerValidate = async (values: AuthValueType) => {

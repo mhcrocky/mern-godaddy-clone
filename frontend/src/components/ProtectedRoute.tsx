@@ -1,4 +1,4 @@
-﻿import React, { ReactNode, useEffect, useState } from 'react';
+﻿import { ReactNode, useEffect, useState } from 'react';
 import axios from '../helper/axios';
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean | null >(null);

@@ -9,7 +9,7 @@ const MyPage = () => {
     title = '',
     type = 'text',
     value = '',
-    onChange = (val) => { }
+    onChange = (val) => {console.log(val) }
   }: {
     name: string,
     title: string,

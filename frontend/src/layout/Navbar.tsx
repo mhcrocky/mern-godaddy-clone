@@ -1,6 +1,6 @@
 
 
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Logo from '../assets/logo.png';
 import axios from '../helper/axios';
 import { useEffect } from "react";
