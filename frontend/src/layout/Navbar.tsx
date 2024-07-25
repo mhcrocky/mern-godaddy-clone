@@ -2,7 +2,7 @@
 
 import React, { ReactNode, useState } from 'react';
 import Logo from '../assets/logo.png';
-import axios from "axios";
+import axios from '../helper/axios';
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { Link, useNavigate } from 'react-router-dom';

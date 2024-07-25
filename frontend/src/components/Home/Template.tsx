@@ -8,7 +8,7 @@ import c4 from '../../assets/c4.png';
 import c5 from '../../assets/c5.png';
 import { PlayIcon, StopIcon } from '../../helper/svg';
 const TemplateSection = () => {
-  const [autoplay, toggleAutoplay] = useState<boolean>(false);
+  const [autoplay, toggleAutoplay] = useState<boolean>(true);
 
   const Item = ({img=c1}:{img:string}) => {
     return (

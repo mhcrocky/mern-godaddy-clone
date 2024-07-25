@@ -10,7 +10,8 @@ export const TodoSchema = new mongoose.Schema({
     type: Boolean,
   },
   userId: {
-    type: Types.ObjectId
+    type: Types.ObjectId,
+    required:true
   }
 });
 

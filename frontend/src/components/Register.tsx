@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import { registerValidate } from "../helper/validate";
 import { AuthValueType } from "../helper/type";
 import cn from "classnames";
-import axios from "axios";
+import axios from '../helper/axios';
 import { useNavigate } from "react-router-dom";
 import Layout from "../layout";
 
@@ -24,10 +24,10 @@ const Register = () => {
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
-      axios.post('/api/register', values).then((res) => {
+      axios.post('/api/register', values).then((res:any) => {
         toast.success(res.data?.success);
         navigate('/login');
-      }).catch((err) => {
+      }).catch((err:any) => {
         console.log(err.response.data.error)
         toast.error(err?.response?.data?.error ? err.response.data.error : 'Network Error')
       })

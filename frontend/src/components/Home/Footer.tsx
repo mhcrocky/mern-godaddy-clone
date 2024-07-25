@@ -90,7 +90,7 @@ const FooterSection = () => {
           <p className='text-white pb-2 text-bold'>Sign Up for news and special offers</p>
           <div className="flex">
             <div className="relative w-full mr-0 formkit-field">
-              <input id="member_email" className="bg-[#2b2b2b] border text-sm rounded-none  block w-full pl-10 p-3 text-black " name="email_address" aria-label="Email Address" placeholder="Email address" required={true} />
+              <input id="member_email" className="bg-[#2b2b2b] text-sm rounded-none  block w-full pl-10 p-3 text-black " name="email_address" aria-label="Email Address" placeholder="Email address" required={true} />
             </div>
             <button data-element="submit" className="formkit-submit bg-white w-1/3">
               <span className="text-sm font-medium text-center text-black rounded-none cursor-pointer ">Sign Up</span>

@@ -2,7 +2,7 @@ import styles from "./Username.module.css";
 import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { loginValidate } from "../helper/validate";
-import axios from "axios";
+import axios from '../helper/axios';
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import Layout from "../layout";
@@ -19,11 +19,11 @@ const Login = () => {
     validateOnChange: false,
     onSubmit: async (values) => {
       console.log(values);
-      axios.post('/api/login', values).then((res) => {
+      axios.post('/api/login', values).then((res:any) => {
         toast.success(res.data?.success);
         Cookies.set('_token', res.data.token)
-        navigate('/');
-      }).catch((err) => {
+        navigate('/home');
+      }).catch((err:any) => {
         console.log(err.response.data.error)
         toast.error(err?.response?.data?.error ? err.response.data.error : 'Network Error')
       })

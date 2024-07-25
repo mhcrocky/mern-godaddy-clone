@@ -1,7 +1,5 @@
 ﻿import React, { ReactNode, useEffect, useState } from 'react';
-import axios from 'axios'; // Import axios
-import Cookies from "js-cookie";
-
+import axios from '../helper/axios';
 const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState<boolean | null >(null);
 
@@ -9,12 +7,7 @@ const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         const checkAuthentication = async () => {
             try {
-                const token: string | undefined = Cookies.get('_token');
-                const res = await axios.get(`/api/user-verify`, {
-                    headers: {
-                        _token: token
-                    }
-                })
+                const res = await axios.get(`/api/user-verify`)
                 setIsAuthenticated(!!res.data?.data?.email);
             } catch (error) {
                 console.error("Error checking authentication status", error);
