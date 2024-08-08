@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { registerValidate } from "../helper/validate";
 import { AuthValueType } from "../helper/type";
-import cn from "classnames";
 import axios from '../helper/axios';
 import { useNavigate } from "react-router-dom";
 import Layout from "../layout";
